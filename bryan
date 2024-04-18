@@ -1,0 +1,55 @@
+#include <iostream>
+#include <cstdlib>
+using namespace std;
+
+int main() {
+    int arr[] = {8, 4, 1, 11, 12, 7, 9, 2, 11, 5, 11, 10, 8, 9};
+    int n = sizeof(arr) / sizeof(arr[0]); // Hitung panjang array
+
+    int jalur = 0;
+    for (int i = 0; i < n - 1; i++) {
+        jalur += abs(arr[i] - arr[i + 1]); // Tambahkan nilai absolut dari selisih dua elemen berturut-turut
+    }
+
+    // Tampilkan array awal
+    cout << "Array awal: ";
+    for (int i = 0; i < n; i++) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+
+    // Tampilkan jalur gambar awal
+    cout << "Jalur gambar awal: " << jalur << endl;
+
+    // Meminta pengguna untuk mengganti nomor pada indeks 1-5
+    int index;
+    cout << "Masukkan indeks elemen yang ingin diganti (1 - 5): ";
+    cin >> index;
+
+    if (index >= 1 && index <= 5) {
+        int newValue;
+        cout << "Masukkan nilai baru untuk elemen indeks " << index << ": ";
+        cin >> newValue;
+        arr[index] = newValue; // Mengganti nilai elemen pada indeks tertentu
+
+        // Tampilkan array setelah penggantian
+        cout << "Array setelah penggantian: ";
+        for (int i = 0; i < n; i++) {
+            cout << arr[i] << " ";
+        }
+        cout << endl;
+
+        // Hitung kembali jalur gambar hanya untuk indeks 1-5 setelah penggantian
+        jalur = 0;
+        for (int i = 1; i <= 5; i++) {
+            jalur += abs(arr[i] - arr[i + 1]); // Tambahkan nilai absolut dari selisih dua elemen berturut-turut pada indeks 1-5
+        }
+
+        // Tampilkan jalur gambar setelah penggantian hanya untuk indeks 1-5
+        cout << "Jalur gambar setelah penggantian (indeks 1-5): " << jalur << endl;
+    } else {
+        cout << "Indeks yang dimasukkan tidak valid untuk penggantian." << endl;
+    }
+
+    return 0;
+}
